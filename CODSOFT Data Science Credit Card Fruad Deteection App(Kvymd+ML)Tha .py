@@ -13,7 +13,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 import os
 import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend
+matplotlib.use('Agg')  
 import matplotlib.pyplot as plt
 from kivy.uix.image import Image
 from kivy.uix.floatlayout import FloatLayout
@@ -113,7 +113,7 @@ class MainScreen(MDScreen):
             report = classification_report(y_test, y_pred, output_dict=True)
             self.report_data = report
 
-            # Navigate to ResultScreen and pass report data
+   
             self.manager.get_screen('result').update_report(report)
             self.manager.current = 'result'
         except Exception as e:
@@ -184,7 +184,6 @@ class ResultScreen(MDScreen):
             self.result_label.text = "No report data available."
             return
 
-        # Create a new screen for the plot
         plot_screen = self.manager.get_screen('plot')
         plot_screen.update_plot(self.report_data)
         self.manager.current = 'plot'
@@ -218,7 +217,7 @@ class PlotScreen(MDScreen):
         self.add_widget(self.layout)
 
     def update_plot(self, report_data):
-        # Create Matplotlib plot
+
         fig, ax = plt.subplots()
         metrics = ['precision', 'recall', 'f1-score']
         genuine = [report_data['0'][m] for m in metrics]
@@ -235,7 +234,7 @@ class PlotScreen(MDScreen):
         ax.set_xticklabels(metrics)
         ax.legend()
 
-        # Convert plot to Kivy texture
+     
         buf = BytesIO()
         fig.savefig(buf, format='png', bbox_inches='tight')
         buf.seek(0)
