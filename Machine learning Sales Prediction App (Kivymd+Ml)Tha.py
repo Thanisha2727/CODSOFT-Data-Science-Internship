@@ -30,7 +30,7 @@ class MainScreen(Screen):
             orientation='vertical',
             spacing=15,
             padding=[20, 30, 20, 50],
-            md_bg_color=get_color_from_hex("#121212")  # Dark background
+            md_bg_color=get_color_from_hex("#121212")  
         )
 
 
@@ -51,7 +51,7 @@ class MainScreen(Screen):
             padding=15,
             size_hint=(0.92, None),
             height=dp(150),
-            md_bg_color=get_color_from_hex("#1E1E1E"),  # Dark card background
+            md_bg_color=get_color_from_hex("#1E1E1E"),  
             radius=[20],
             elevation=5,
             pos_hint={'center_x': 0.5}
